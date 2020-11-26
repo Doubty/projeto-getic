@@ -1,12 +1,11 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+import express, { json, urlencoded } from 'express';
 import authController from './controllers/AuthController';
 import pingController from './controllers/PingController';
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 app.use(authController);
 app.use(pingController);
 
