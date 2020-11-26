@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
-    "prod": "tsc && node ./dist/app.js",
+    "prod": "tsc && node ./dist/App.js",
     "build": "tsc"
   },
   "dependencies": {
