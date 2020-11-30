@@ -1,0 +1,20 @@
+version: '3'
+services:
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USER: 'getic_user'
+      POSTGRES_PASSWORD: 'getic_password'
+      POSTGRES_DB: 'getic'
+    ports:
+      - 5432:5432
+  api:
+    build: '.'
+    env_file: .env
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
+    command: yarn adonis serve --dev

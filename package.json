@@ -23,6 +23,7 @@
     "pg": "^8.5.1"
   },
   "devDependencies": {
+    "@adonisjs/cli": "^4.0.12",
     "eslint": "^7.14.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.15.0",
