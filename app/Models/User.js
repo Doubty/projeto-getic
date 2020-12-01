@@ -6,6 +6,14 @@ const Model = use('Model');
 const Hash = use('Hash');
 
 class User extends Model {
+  static get table() {
+    return 'users';
+  }
+
+  static get hidden() {
+    return ['password', 'created_at', 'updated_at'];
+  }
+
   static boot() {
     super.boot();
 
@@ -32,6 +40,10 @@ class User extends Model {
    */
   tokens() {
     return this.hasMany('App/Models/Token');
+  }
+
+  setor() {
+    return this.belongsTo('App/Models/Setor');
   }
 }
 
