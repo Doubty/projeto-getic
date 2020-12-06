@@ -9,7 +9,7 @@ class ComputerSchema extends Schema {
 
       table.increments();
       table.string('tombamento', 30).notNullable();
-      table.string('descricao', 200);
+      table.string('descricao', 200).notNullable();
       table
         .enu('status', computerStatuses)
         .notNullable()

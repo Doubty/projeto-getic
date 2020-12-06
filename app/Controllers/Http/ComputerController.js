@@ -12,7 +12,7 @@ class ComputerController {
   }
 
   async create({ request }) {
-    const data = request.only(['tombamento', 'status', 'user_id']);
+    const data = request.only(['tombamento', 'descricao', 'status', 'user_id']);
     const computer = await Computer.create(data);
     return computer;
   }
