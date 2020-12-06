@@ -45,6 +45,10 @@ class User extends Model {
   setor() {
     return this.belongsTo('App/Models/Setor');
   }
+
+  computer() {
+    return this.hasOne('App/Models/Computer');
+  }
 }
 
 module.exports = User;

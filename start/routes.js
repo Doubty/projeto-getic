@@ -32,4 +32,11 @@ Route.group(() => {
   // SetorController
   Route.patch('/setores/:id', 'SetorController.update');
   Route.delete('/setores/:id', 'SetorController.update');
+
+  // ComputerController
+  Route.get('/computers/', 'ComputerController.getAll');
+  Route.get('/computers/:id', 'ComputerController.get');
+  Route.post('/computers/', 'ComputerController.create');
+  Route.patch('/computers/:id', 'ComputerController.update');
+  Route.delete('/computers/:id', 'ComputerController.remove');
 }).middleware(['auth']);
