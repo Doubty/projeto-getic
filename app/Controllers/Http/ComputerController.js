@@ -11,17 +11,21 @@ class ComputerController {
     return computer;
   }
 
-  async create({ request }) {
-    const data = request.only(['tombamento', 'descricao', 'status', 'user_id']);
+  async create({ request, auth }) {
+    const data = request.only(['tombamento', 'descricao', 'status']);
+    data.user_id = auth.user.id;
     const computer = await Computer.create(data);
     return computer;
   }
 
   async update({ request, params }) {
-    const { status, user_id } = request.all();
+    const data = request.only(['descricao', 'status', 'user_id']);
     const computer = await Computer.findOrFail(params.id);
-    computer.status = status;
-    computer.user_id = user_id;
+    computer.descricao = data.descricao;
+    computer.status = data.status;
+    if (data.user_id) {
+      computer.user_id = data.user_id;
+    }
     computer.save();
     return computer;
   }
