@@ -9,6 +9,10 @@ class Computer extends Model {
   user() {
     return this.belongsTo('App/Models/User');
   }
+
+  ticket() {
+    return this.belongsTo('App/Models/Ticket');
+  }
 }
 
 module.exports = Computer;

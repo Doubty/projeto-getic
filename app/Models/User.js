@@ -49,6 +49,10 @@ class User extends Model {
   computer() {
     return this.hasOne('App/Models/Computer');
   }
+
+  tickets() {
+    return this.hasMany('App/Models/Computer');
+  }
 }
 
 module.exports = User;

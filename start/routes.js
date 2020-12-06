@@ -39,4 +39,11 @@ Route.group(() => {
   Route.post('/computers/', 'ComputerController.create');
   Route.patch('/computers/:id', 'ComputerController.update');
   Route.delete('/computers/:id', 'ComputerController.remove');
+
+  // TicketController
+  Route.get('/tickets/', 'TicketController.getAll');
+  Route.get('/tickets/:id', 'TicketController.get');
+  Route.post('/tickets/', 'TicketController.create');
+  Route.patch('/tickets/:id', 'TicketController.update');
+  Route.delete('/tickets/:id', 'TicketController.remove');
 }).middleware(['auth']);
