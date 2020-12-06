@@ -6,6 +6,10 @@ class Computer extends Model {
     return 'computers';
   }
 
+  static get hidden() {
+    return ['created_at', 'updated_at'];
+  }
+
   user() {
     return this.belongsTo('App/Models/User');
   }
