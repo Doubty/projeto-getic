@@ -14,7 +14,12 @@ class UserSchema extends Schema {
       table.string('cpf', 11).notNullable().unique();
       table.string('cep', 8).notNullable();
       table.string('telefone', 11).notNullable();
-      table.enu('tipo', userTypes).notNullable();
+      table
+        .enu('tipo', userTypes, {
+          useNative: true,
+          enumName: 'tipo_usuario',
+        })
+        .notNullable();
       table.string('email', 30).notNullable().unique();
       table.string('password', 60).notNullable();
       table
@@ -31,6 +36,7 @@ class UserSchema extends Schema {
 
   down() {
     this.drop('users');
+    this.raw('DROP TYPE tipo_usuario');
   }
 }
 

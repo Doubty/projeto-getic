@@ -11,7 +11,10 @@ class ComputerSchema extends Schema {
       table.string('tombamento', 30).notNullable();
       table.string('descricao', 200).notNullable();
       table
-        .enu('status', computerStatuses)
+        .enu('status', computerStatuses, {
+          useNative: true,
+          enumName: 'status_computador',
+        })
         .notNullable()
         .defaultTo(ComputerStatus.AVAILABLE);
       table.timestamps();
@@ -21,6 +24,7 @@ class ComputerSchema extends Schema {
 
   down() {
     this.drop('computers');
+    this.raw('DROP TYPE status_computador');
   }
 }
 

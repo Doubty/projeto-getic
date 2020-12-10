@@ -10,10 +10,15 @@ class TicketSchema extends Schema {
       const ticketStatuses = Object.values(TicketStatus);
 
       table.increments();
-      table.enu('tipo', ticketTypes).notNullable();
+      table
+        .enu('tipo', ticketTypes, { useNative: true, enumName: 'tipo_ticket' })
+        .notNullable();
       table.string('descricao', 200).notNullable();
       table
-        .enu('status', ticketStatuses)
+        .enu('status', ticketStatuses, {
+          useNative: true,
+          enumName: 'tipo_status',
+        })
         .notNullable()
         .defaultTo(TicketStatus.PENDING);
       table.timestamps();
@@ -33,6 +38,8 @@ class TicketSchema extends Schema {
 
   down() {
     this.drop('tickets');
+    this.raw('DROP TYPE tipo_ticket');
+    this.raw('DROP TYPE tipo_status');
   }
 }
 
