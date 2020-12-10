@@ -25,9 +25,8 @@ class ComputerController {
   async update({ request, params }) {
     const data = request.only(['descricao', 'status']);
     const ticket = await Ticket.findOrFail(params.id);
-    ticket.descricao = data.descricao;
-    ticket.status = data.status;
-    ticket.save();
+    ticket.merge(data);
+    await ticket.save();
     return ticket;
   }
 
